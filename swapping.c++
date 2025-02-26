@@ -1,35 +1,45 @@
-// WAP Program to swap two numbers using friend function
-#include <iostream>
+#include<iostream>
 #include<conio.h>
 using namespace std;
- 
-class Swap {
-    int temp, a, b;       // Declare the variables to  Swap Class
-       public:
- 
-                        
-     Swap(int a, int b)  
-    { 
-        this->a = a;
-        this->b = b;
-    }
+class two;
+class one
+  {
+    int numone;
+      public:
+        void setone();
+        void displayone();
+        void swap(two &);
+  };
 
-    friend void swap(Swap&);
-};
- 
-// Define the swap function outside class 
-void swap(Swap& s1)
-{
-    cout << "\n number Before Swapping: " << s1.a << " " << s1.b;
-    s1.temp = s1.a;
-    s1.a = s1.b;
-    s1.b = s1.temp;
-    cout << "\n number After Swapping: " << s1.a << " " << s1.b;
-}
+class two 
+  {
+    int numtwo ;
+      public:
+        void settwo();
+        void displaytwo();
+        friend void one ::swap(two &);
+  };
 
 int main()
-{
-    Swap s(4, 6);
-    swap(s);
-    return 0;
-}
+  {
+    one objone;
+    two objtwo;
+    objone.setone();
+    objtwo.settwo();
+    cout<<"\n before swapping";
+    objone. displayone ();
+    objtwo.displaytwo ();
+    cout<<"\n After swapping : ";
+    objone.displayone();
+    objtwo.displaytwo ();
+  
+      return  0;
+  }
+
+  void one:: swap(two & y)
+  {
+    int temp;
+    temp=numone ;
+    numone =y.numtwo;
+    y.numtwo=temp;
+  }
